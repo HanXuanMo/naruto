@@ -17,4 +17,5 @@
     <string name="tab_industry">产业</string>
     <string name="tab_entertainment">娱乐</string>
     <string name="tab_mobile_games">手游</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
