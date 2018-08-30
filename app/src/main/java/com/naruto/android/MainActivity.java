@@ -1,5 +1,6 @@
 package com.naruto.android;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -110,11 +112,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.content_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.text_view);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            //Intent Ps
+            Button intentPs = (Button) rootView.findViewById(R.id.intent_ps);
+            intentPs.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(container.getContext(), Ps.class);
+                    startActivity(intent);
+                }
+            });
             return rootView;
         }
     }
