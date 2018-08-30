@@ -12,7 +12,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_dashboard_black_24dp"
+        android:src="@drawable/ic_launcher_background"
         app:elevation="5dp"
         app:fabSize="normal" />
 
@@ -23,7 +23,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_home_black_24dp"
+        android:src="@drawable/ic_launcher_foreground"
         app:elevation="5dp"
         app:fabSize="normal"/>
 
@@ -34,7 +34,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@color/colorPrimaryDark"
         app:elevation="5dp"
         app:fabSize="normal"/>
 
@@ -45,7 +45,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/ic_home_black_24dp"
         app:elevation="5dp"
         app:fabSize="normal"/>
 </FrameLayout>

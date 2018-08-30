@@ -48,6 +48,7 @@ public class Ps extends AppCompatActivity{
                     Drawable drawable1 = actionButton1.getDrawable();
                     actionButton1.setImageDrawable(drawable);
                     actionButton.setImageDrawable(drawable1);
+                    hideMenu();
             }
         });
 
@@ -58,6 +59,7 @@ public class Ps extends AppCompatActivity{
                 Drawable drawable2 = actionButton2.getDrawable();
                 actionButton2.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable2);
+                hideMenu();
             }
         });
 
@@ -68,6 +70,7 @@ public class Ps extends AppCompatActivity{
                 Drawable drawable3 = actionButton3.getDrawable();
                 actionButton3.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable3);
+                hideMenu();
             }
         });
     }
