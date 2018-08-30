@@ -1,15 +1,20 @@
 <resources>
     <string name="app_name">游民星空</string>
+    <!--Menu标题-->
     <string name="title_home_page">首页</string>
     <string name="title_game">游戏</string>
     <string name="title_circle">圈子</string>
     <string name="title_me">我的</string>
-    <string name="title_activity_view_page">ViewPageActivity</string>
+    <!--TAB标题-->
     <string name="tab_headline">头条</string>
     <string name="tab_subscribe">订阅</string>
     <string name="tab_video">视频</string>
     <string name="tab_game">游戏</string>
     <string name="tab_science">科技</string>
     <string name="tab_movies">影视</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab_cartoon">动漫</string>
+    <string name="tab_evaluating">评测</string>
+    <string name="tab_industry">产业</string>
+    <string name="tab_entertainment">娱乐</string>
+    <string name="tab_mobile_games">手游</string>
 </resources>
