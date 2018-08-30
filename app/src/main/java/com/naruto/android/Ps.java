@@ -1,6 +1,7 @@
 package com.naruto.android;
 
 import android.animation.ValueAnimator;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +39,35 @@ public class Ps extends AppCompatActivity{
                 }else {
                     showMenu();
                 }
+            }
+        });
+        actionButton1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                    Drawable drawable = actionButton.getDrawable();
+                    Drawable drawable1 = actionButton1.getDrawable();
+                    actionButton1.setImageDrawable(drawable);
+                    actionButton.setImageDrawable(drawable1);
+            }
+        });
+
+        actionButton2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Drawable drawable = actionButton.getDrawable();
+                Drawable drawable2 = actionButton2.getDrawable();
+                actionButton2.setImageDrawable(drawable);
+                actionButton.setImageDrawable(drawable2);
+            }
+        });
+
+        actionButton3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Drawable drawable = actionButton.getDrawable();
+                Drawable drawable3 = actionButton3.getDrawable();
+                actionButton3.setImageDrawable(drawable);
+                actionButton.setImageDrawable(drawable3);
             }
         });
     }
