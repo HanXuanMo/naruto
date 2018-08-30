@@ -4,4 +4,12 @@
     <string name="title_game">游戏</string>
     <string name="title_circle">圈子</string>
     <string name="title_me">我的</string>
+    <string name="title_activity_view_page">ViewPageActivity</string>
+    <string name="tab_headline">头条</string>
+    <string name="tab_subscribe">订阅</string>
+    <string name="tab_video">视频</string>
+    <string name="tab_game">游戏</string>
+    <string name="tab_science">科技</string>
+    <string name="tab_movies">影视</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
