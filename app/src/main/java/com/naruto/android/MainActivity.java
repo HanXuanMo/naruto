@@ -360,37 +360,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void initFruits() {
-        for (int i = 0; i < 2; i++) {
-            Game apple = new Game(getRandomLengthName("Apple"), R.drawable.ic_dashboard_black_24dp);
+        for (int i = 0; i < 10; i++) {
+            Game apple = new Game("Apple", R.drawable.ic_dashboard_black_24dp);
             gameList.add(apple);
-            Game banana = new Game(getRandomLengthName("Banana"),R.drawable.ic_dashboard_black_24dp);
+            Game banana = new Game("Banana",R.drawable.ic_dashboard_black_24dp);
             gameList.add(banana);
-            Game orange = new Game(getRandomLengthName("Orange"),R.drawable.ic_dashboard_black_24dp);
+            Game orange = new Game("Orange",R.drawable.ic_dashboard_black_24dp);
             gameList.add(orange);
-            Game watermelon = new Game(getRandomLengthName("Watermelon"), R.drawable.ic_dashboard_black_24dp);
+            Game watermelon = new Game("Watermelon", R.drawable.ic_dashboard_black_24dp);
             gameList.add(watermelon);
-            Game pear = new Game(getRandomLengthName("Pear"), R.drawable.ic_dashboard_black_24dp);
+            Game pear = new Game("Pear", R.drawable.ic_dashboard_black_24dp);
             gameList.add(pear);
-            Game grape = new Game(getRandomLengthName("Grape"), R.drawable.ic_dashboard_black_24dp);
+            Game grape = new Game("Grape", R.drawable.ic_dashboard_black_24dp);
             gameList.add(grape);
-            Game pineapple = new Game(getRandomLengthName("Pineapple"),R.drawable.ic_dashboard_black_24dp);
+            Game pineapple = new Game("Pineapple",R.drawable.ic_dashboard_black_24dp);
             gameList.add(pineapple);
-            Game strawberry = new Game(getRandomLengthName("Strawberry"),R.drawable.ic_dashboard_black_24dp);
+            Game strawberry = new Game("Strawberry",R.drawable.ic_dashboard_black_24dp);
             gameList.add(strawberry);
-            Game cherry = new Game(getRandomLengthName("Cherry"),R.drawable.ic_dashboard_black_24dp);
+            Game cherry = new Game("Cherry",R.drawable.ic_dashboard_black_24dp);
             gameList.add(cherry);
-            Game mango = new Game(getRandomLengthName("Mango"),R.drawable.ic_dashboard_black_24dp);
+            Game mango = new Game("Mango",R.drawable.ic_dashboard_black_24dp);
             gameList.add(mango);
         }
     }
 
-    private String getRandomLengthName(String name) {
-        Random random = new Random();
-        int length = random.nextInt(20) + 1;
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            builder.append(name);
-        }
-        return builder.toString();
-    }
 }
