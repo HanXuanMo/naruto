@@ -1,5 +1,6 @@
 package com.naruto.android;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,9 +20,14 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    private ViewPager mViewPager;
 
     private TextView mTextView;
     private DrawerLayout mDrawerLayout;
@@ -31,25 +38,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //滑动菜单点击事件
-        mTextView = (TextView) findViewById(R.id.text_show);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        navigationView.setCheckedItem(R.id.home_page);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);//获取滑动菜单事件
+        navigationView.setCheckedItem(R.id.navigation_home);//默认选择navigation_home
+        //设置监听器
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.home_page:
-                        mTextView.setText("首页");
+                    case R.id.navigation_home:
+
                         break;
-                    case R.id.navigation_game:
-                        mTextView.setText("游戏");
+                    case R.id.navigation_collect:
+
                         break;
-                    case R.id.navigation_circle:
-                        mTextView.setText("圈子");
+                    case R.id.navigation_balance:
+
                         break;
-                    case R.id.navigation_me:
-                        mTextView.setText("我的");
+                    case R.id.navigation_transaction:
+
                         break;
+                    case R.id.navigation_synchronization:
+
+                        break;
+                    case R.id.navigation_support:
+
+                        break;
+                    case R.id.navigation_cooperation:
+
+                        break;
+                    default:
                 }
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -69,16 +86,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //TabLayout
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        //tab可滚动
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        //tab居中显示
-        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
-        //tab的字体选择器,默认黑色,选择时红色
-        tabLayout.setTabTextColors(Color.BLACK, Color.RED);
-        //tab的下划线颜色,默认是粉红色
-        tabLayout.setSelectedTabIndicatorColor(Color.BLUE);
-
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
 
     //菜单点击事件
@@ -93,11 +106,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //设置tabLayout的点击监听器
+    //TabLayout点击事件
     public static class PlaceholderFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        public PlaceholderFragment() {
+        }
 
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
@@ -107,9 +122,30 @@ public class MainActivity extends AppCompatActivity {
             return fragment;
         }
 
+        //View页面事件
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.activity_main, container, false);
+        public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.content_main, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.text_view);
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            //Intent Ps
+            Button intentPs = (Button) rootView.findViewById(R.id.intent_ps);
+            intentPs.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(container.getContext(), Ps.class);
+                    startActivity(intent);
+                }
+            });
+            //Intent Login
+            Button intentLogin = (Button) rootView.findViewById(R.id.intent_login);
+            intentLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(container.getContext(), Login.class);
+                    startActivity(intent);
+                }
+            });
             return rootView;
         }
     }
@@ -131,5 +167,4 @@ public class MainActivity extends AppCompatActivity {
             return 11;
         }
     }
-
 }
