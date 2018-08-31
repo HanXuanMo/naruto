@@ -8,7 +8,7 @@ public class Game {
     int gameImage;
     String gameName;
 
-    public Game(int gameImage,String gameName)
+    public Game(String gameName,int gameImage)
     {
         this.gameImage=gameImage;
         this.gameName=gameName;

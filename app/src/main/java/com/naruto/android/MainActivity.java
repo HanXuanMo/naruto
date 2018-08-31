@@ -17,6 +17,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -25,7 +27,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
+
+    private List<Game>gameList=new ArrayList<>();
 
     //按钮距离
     private static final int DISTANCE = 300;
@@ -47,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        initFruits();
 
         //滑动菜单点击事件
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);//获取滑动菜单事件
@@ -103,6 +112,14 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+
+        //滑动列表
+        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recycler_view);
+        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        GameAdapter adapter=new GameAdapter(gameList);
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -321,8 +338,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.content_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.text_view);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }
@@ -343,5 +358,39 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return 11;
         }
+    }
+    private void initFruits() {
+        for (int i = 0; i < 2; i++) {
+            Game apple = new Game(getRandomLengthName("Apple"), R.drawable.ic_dashboard_black_24dp);
+            gameList.add(apple);
+            Game banana = new Game(getRandomLengthName("Banana"),R.drawable.ic_dashboard_black_24dp);
+            gameList.add(banana);
+            Game orange = new Game(getRandomLengthName("Orange"),R.drawable.ic_dashboard_black_24dp);
+            gameList.add(orange);
+            Game watermelon = new Game(getRandomLengthName("Watermelon"), R.drawable.ic_dashboard_black_24dp);
+            gameList.add(watermelon);
+            Game pear = new Game(getRandomLengthName("Pear"), R.drawable.ic_dashboard_black_24dp);
+            gameList.add(pear);
+            Game grape = new Game(getRandomLengthName("Grape"), R.drawable.ic_dashboard_black_24dp);
+            gameList.add(grape);
+            Game pineapple = new Game(getRandomLengthName("Pineapple"),R.drawable.ic_dashboard_black_24dp);
+            gameList.add(pineapple);
+            Game strawberry = new Game(getRandomLengthName("Strawberry"),R.drawable.ic_dashboard_black_24dp);
+            gameList.add(strawberry);
+            Game cherry = new Game(getRandomLengthName("Cherry"),R.drawable.ic_dashboard_black_24dp);
+            gameList.add(cherry);
+            Game mango = new Game(getRandomLengthName("Mango"),R.drawable.ic_dashboard_black_24dp);
+            gameList.add(mango);
+        }
+    }
+
+    private String getRandomLengthName(String name) {
+        Random random = new Random();
+        int length = random.nextInt(20) + 1;
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            builder.append(name);
+        }
+        return builder.toString();
     }
 }
