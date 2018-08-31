@@ -16,20 +16,7 @@
         android:layout_height="wrap_content"
         android:text="@string/title_home"/>
 
-    <Button
-        android:id="@+id/intent_ps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Intent Pa"
-        android:layout_below="@id/text_view"
-        android:textAllCaps="false"/>
 
-    <Button
-        android:id="@+id/intent_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Intent Login"
-        android:layout_below="@id/intent_ps"
-        android:textAllCaps="false"/>
+
 
 </RelativeLayout>

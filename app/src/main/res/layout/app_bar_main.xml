@@ -30,22 +30,16 @@
             app:tabTextColor="@color/colorAccent">
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tab_headline"
+                android:id="@+id/tab_home_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_headline"/>
+                android:text="@string/tab_home_page"/>
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tab_subscribe"
+                android:id="@+id/tab_article"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_subscribe"/>
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tab_video"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_video"/>
+                android:text="@string/tab_article"/>
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tab_game"
@@ -54,46 +48,16 @@
                 android:text="@string/tab_game"/>
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tab_science"
+                android:id="@+id/tab_video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_science"/>
+                android:text="@string/tab_video"/>
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tab_movies"
+                android:id="@+id/tab_evaluation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_movies"/>
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tab_cartoon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_cartoon"/>
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tab_evaluating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_evaluating"/>
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tab_industry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_industry"/>
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tab_entertainment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_entertainment"/>
-
-            <android.support.design.widget.TabItem
-                android:id="@+id/tab_mobile_games"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_mobile_games"/>
+                android:text="@string/tab_evaluation"/>
 
         </android.support.design.widget.TabLayout>
 
