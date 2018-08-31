@@ -9,6 +9,7 @@ import android.view.View;
 
 public class Ps extends AppCompatActivity{
 
+    //按钮距离
     private static final int DISTANCE = 300;
     private static final int DISTANCE2 = 220;
 
@@ -41,11 +42,14 @@ public class Ps extends AppCompatActivity{
                 }
             }
         });
+        //触发按钮
         actionButton1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                    //获取原按钮及点击按钮图片
                     Drawable drawable = actionButton.getDrawable();
                     Drawable drawable1 = actionButton1.getDrawable();
+                    //交换原按钮及点击按钮图片
                     actionButton1.setImageDrawable(drawable);
                     actionButton.setImageDrawable(drawable1);
                     hideMenu();
@@ -77,17 +81,23 @@ public class Ps extends AppCompatActivity{
 
     private void showMenu() {
         mMenuOpen = true;
+        //获取按钮坐标
         int x = (int) actionButton.getX();
         int y = (int) actionButton.getY();
+        //动画
         ValueAnimator v1 = ValueAnimator.ofInt(x, x - DISTANCE);
+        //动画播放时间
         v1.setDuration(500);
+        //动画更新
         v1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
+                //获取按钮上，下，左，右的坐标
                 int l = (int) animation.getAnimatedValue();
                 int t = (int) actionButton1.getY();
                 int r = actionButton1.getWidth() + l;
                 int b = actionButton1.getHeight() + t;
+                //设置按钮坐标
                 actionButton1.layout(l, t, r, b);
             }
         });
@@ -124,6 +134,7 @@ public class Ps extends AppCompatActivity{
                 actionButton3.layout(l, t, r, b);
             }
         });
+        //开始动画
         v1.start();
         v2x.start();
         v2y.start();
@@ -132,16 +143,22 @@ public class Ps extends AppCompatActivity{
 
     private void hideMenu() {
         mMenuOpen = false;
+        //获取按钮坐标
         int x = (int) actionButton1.getX();
+        //动画
         ValueAnimator v1 = ValueAnimator.ofInt(x, (int) actionButton.getX());
+        //动画播放时间
         v1.setDuration(500);
+        //动画更新
         v1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
+                //获取按钮上，下，左，右的坐标
                 int l = (int) animation.getAnimatedValue();
                 int t = (int) actionButton1.getY();
                 int r = actionButton1.getWidth() + l;
                 int b = actionButton1.getHeight() + t;
+                //设置按钮坐标
                 actionButton1.layout(l, t, r, b);
             }
         });
@@ -181,6 +198,7 @@ public class Ps extends AppCompatActivity{
                 actionButton3.layout(l, t, r, b);
             }
         });
+        //开始动画
         v1.start();
         v2x.start();
         v2y.start();
