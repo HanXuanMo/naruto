@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">游民星空</string>
     <!--Menu标题-->
-    <string name="title_home_page">首页</string>
-    <string name="title_game">游戏</string>
-    <string name="title_circle">圈子</string>
-    <string name="title_me">我的</string>
+    <string name="title_home">主页</string>
+    <string name="title_collection">收藏</string>
+    <string name="title_balance">余额</string>
+    <string name="title_transaction">交易</string>
+    <string name="title_synchronization">同步游戏奖杯/成就</string>
+    <string name="title_support">支持我们</string>
+    <string name="title_cooperation">商务合作</string>
     <!--TAB标题-->
     <string name="tab_headline">头条</string>
     <string name="tab_subscribe">订阅</string>
@@ -17,5 +20,6 @@
     <string name="tab_industry">产业</string>
     <string name="tab_entertainment">娱乐</string>
     <string name="tab_mobile_games">手游</string>
+    <!--ViewPage内容-->
     <string name="section_format">Hello World from section: %1$d</string>
 </resources>

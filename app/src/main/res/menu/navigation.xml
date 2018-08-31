@@ -3,24 +3,36 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/home_page"
+            android:id="@+id/navigation_home"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/title_home_page" />
+            android:title="@string/title_home" />
 
         <item
-            android:id="@+id/navigation_game"
+            android:id="@+id/navigation_collect"
             android:icon="@drawable/ic_dashboard_black_24dp"
-            android:title="@string/title_game" />
+            android:title="@string/title_collection" />
 
         <item
-            android:id="@+id/navigation_circle"
+            android:id="@+id/navigation_balance"
             android:icon="@drawable/ic_notifications_black_24dp"
-            android:title="@string/title_circle" />
+            android:title="@string/title_balance" />
 
         <item
-            android:id="@+id/navigation_me"
+            android:id="@+id/navigation_transaction"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/title_me" />
+            android:title="@string/title_transaction" />
+        <item
+            android:id="@+id/navigation_synchronization"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/title_synchronization" />
+        <item
+            android:id="@+id/navigation_support"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/title_support" />
+        <item
+            android:id="@+id/navigation_cooperation"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/title_cooperation" />
     </group>
 
 </menu>

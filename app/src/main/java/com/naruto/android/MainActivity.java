@@ -38,24 +38,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //滑动菜单点击事件
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        navigationView.setCheckedItem(R.id.home_page);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);//获取滑动菜单事件
+        navigationView.setCheckedItem(R.id.navigation_home);//默认选择navigation_home
+        //设置监听器
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.home_page:
+                    case R.id.navigation_home:
 
                         break;
-                    case R.id.navigation_game:
+                    case R.id.navigation_collect:
 
                         break;
-                    case R.id.navigation_circle:
+                    case R.id.navigation_balance:
 
                         break;
-                    case R.id.navigation_me:
+                    case R.id.navigation_transaction:
 
                         break;
+                    case R.id.navigation_synchronization:
+
+                        break;
+                    case R.id.navigation_support:
+
+                        break;
+                    case R.id.navigation_cooperation:
+
+                        break;
+                    default:
                 }
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;
@@ -111,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             return fragment;
         }
 
+        //View页面事件
         @Override
         public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.content_main, container, false);
@@ -122,6 +134,15 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(container.getContext(), Ps.class);
+                    startActivity(intent);
+                }
+            });
+            //Intent Login
+            Button intentLogin = (Button) rootView.findViewById(R.id.intent_login);
+            intentLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(container.getContext(), Login.class);
                     startActivity(intent);
                 }
             });
