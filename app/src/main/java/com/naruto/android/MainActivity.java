@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -33,8 +34,6 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Game>gameList=new ArrayList<>();
-
     //按钮距离
     private static final int DISTANCE = 300;
     private static final int DISTANCE2 = 220;
@@ -43,11 +42,13 @@ public class MainActivity extends AppCompatActivity {
     private boolean mMenuOpen = false;
     private View mFlMenu;
 
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private List<Game>gameList=new ArrayList<>();
 
+    //ViewPage
     private ViewPager mViewPager;
+    View homepageContent, articleContent, gameContent, videoContent, evaluationContent;
+    private List<View> viewList;//view数组
 
-    private TextView mTextView;
     private DrawerLayout mDrawerLayout;
 
     @Override
@@ -55,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        initFruits();
 
         //滑动菜单点击事件
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);//获取滑动菜单事件
@@ -105,22 +105,50 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
         }
 
+        //View声明
+        homepageContent = getLayoutInflater().inflate(R.layout.content_home_page, null);
+        articleContent = getLayoutInflater().inflate(R.layout.content_article, null);
+        gameContent = getLayoutInflater().inflate(R.layout.game_item, null);
+        videoContent = getLayoutInflater().inflate(R.layout.content_video, null);
+        evaluationContent = getLayoutInflater().inflate(R.layout.content_evaluation, null);
+        viewList = new ArrayList<View>();
+        viewList.add(homepageContent);
+        viewList.add(articleContent);
+        viewList.add(gameContent);
+        viewList.add(videoContent);
+        viewList.add(evaluationContent);
         //TabLayout
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        //TabLayout(PagerAdapter)
+        PagerAdapter pagerAdapter = new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return viewList.size();
+            }
 
+            @Override
+            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+                container.removeView(viewList.get(position));
+            }
 
-        //滑动列表
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.recycler_view);
-        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        GameAdapter adapter=new GameAdapter(gameList);
-        recyclerView.setAdapter(adapter);
+            @NonNull
+            @Override
+            public Object instantiateItem(@NonNull ViewGroup container, int position) {
+                container.addView(viewList.get(position));
+                return viewList.get(position);
 
+            }
+
+            @Override
+            public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+                return view == o;
+            }
+        };
+        mViewPager.setAdapter(pagerAdapter);
+        
     }
 
 
@@ -318,47 +346,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //TabLayout点击事件
-    public static class PlaceholderFragment extends Fragment {
-
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        //View页面事件
-        @Override
-        public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.content_main, container, false);
-            return rootView;
-        }
-    }
-
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-
-            return PlaceholderFragment.newInstance(position + 1);
-        }
-
-        @Override
-        public int getCount() {
-            return 5;
-        }
-    }
     private void initFruits() {
         for (int i = 0; i < 10; i++) {
             Game apple = new Game("Apple", R.drawable.ic_dashboard_black_24dp);

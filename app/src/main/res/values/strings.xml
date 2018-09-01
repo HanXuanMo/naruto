@@ -9,20 +9,9 @@
     <string name="title_support">支持我们</string>
     <string name="title_cooperation">商务合作</string>
     <!--TAB标题-->
-    <string name="tab_headline">头条</string>
-    <string name="tab_subscribe">订阅</string>
-    <string name="tab_video">视频</string>
-    <string name="tab_game">游戏</string>
-    <string name="tab_science">科技</string>
-    <string name="tab_movies">影视</string>
-    <string name="tab_cartoon">动漫</string>
-    <string name="tab_evaluating">评测</string>
-    <string name="tab_industry">产业</string>
-    <string name="tab_entertainment">娱乐</string>
-    <string name="tab_mobile_games">手游</string>
-    <string name="tab_evaluation">测评</string>
     <string name="tab_home_page">首页</string>
     <string name="tab_article">文章</string>
-    <!--ViewPage内容-->
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="tab_game">游戏</string>
+    <string name="tab_video">视频</string>
+    <string name="tab_evaluation">测评</string>
 </resources>
