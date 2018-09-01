@@ -26,22 +26,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    //
+    private  ViewGroup mViewGroup;
+    private static int ID;
+
     //按钮距离
     private static final int DISTANCE = 300;
     private static final int DISTANCE2 = 220;
 
+    //FloatingActionButton
     private FloatingActionButton actionButton, actionButton1, actionButton2, actionButton3;
     private boolean mMenuOpen = false;
     private View mFlMenu;
 
+    //Game监听器
     private List<Game>gameList=new ArrayList<>();
 
     //ViewPage
@@ -55,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
 
         //滑动菜单点击事件
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);//获取滑动菜单事件
         navigationView.setCheckedItem(R.id.navigation_home);//默认选择navigation_home
+
         //设置监听器
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -117,48 +125,53 @@ public class MainActivity extends AppCompatActivity {
         viewList.add(gameContent);
         viewList.add(videoContent);
         viewList.add(evaluationContent);
+
         //TabLayout
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        //TabLayout(PagerAdapter)
-        PagerAdapter pagerAdapter = new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return viewList.size();
-            }
-
-            @Override
-            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-                container.removeView(viewList.get(position));
-            }
-
-            @NonNull
-            @Override
-            public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                container.addView(viewList.get(position));
-                return viewList.get(position);
-
-            }
-
-            @Override
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-                return view == o;
-            }
-        };
         mViewPager.setAdapter(pagerAdapter);
-        
+
     }
 
+    //TabLayout(PagerAdapter)
+    PagerAdapter pagerAdapter = new PagerAdapter() {
 
-    private void initView(){
+        @Override
+        public int getCount() {
+            return viewList.size();
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            container.removeView(viewList.get(position));
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            //载入FloatingActionButton
+            initView();
+            container.addView(viewList.get(position));
+            return viewList.get(position);
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+            return view == o;
+        }
+
+    };
+
+    private void initView() {
         mFlMenu = findViewById(R.id.fl_menu);
 
         actionButton = (FloatingActionButton) findViewById(R.id.float_btn);
         actionButton1 = (FloatingActionButton) findViewById(R.id.float_btn1);
         actionButton2 = (FloatingActionButton) findViewById(R.id.float_btn2);
         actionButton3 = (FloatingActionButton) findViewById(R.id.float_btn3);
+        ID = R.drawable.ic_launcher_foreground;
 
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 //交换原按钮及点击按钮图片
                 actionButton1.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable1);
+                ID = R.drawable.ic_dashboard_black_24dp;
                 hideMenu();
             }
         });
@@ -191,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
                 Drawable drawable2 = actionButton2.getDrawable();
                 actionButton2.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable2);
+                ID = R.drawable.ic_home_black_24dp;
                 hideMenu();
             }
         });
@@ -202,11 +217,11 @@ public class MainActivity extends AppCompatActivity {
                 Drawable drawable3 = actionButton3.getDrawable();
                 actionButton3.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable3);
+                ID = R.drawable.ic_launcher_background;
                 hideMenu();
             }
         });
     }
-
 
     private void showMenu() {
         mMenuOpen = true;
@@ -328,6 +343,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //开始动画
+        initViewContent(ID, viewList.get(0));
+        initViewContent(ID, viewList.get(1));
+        initViewContent(ID, viewList.get(2));
+        initViewContent(ID, viewList.get(3));
         v1.start();
         v2x.start();
         v2y.start();
@@ -368,6 +387,27 @@ public class MainActivity extends AppCompatActivity {
             gameList.add(cherry);
             Game mango = new Game("Mango",R.drawable.ic_dashboard_black_24dp);
             gameList.add(mango);
+        }
+    }
+
+    //判断画面
+    private void initViewContent(int id, View mView) {
+        if (id == R.drawable.ic_launcher_foreground && mView.equals(homepageContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
+        } else if (id == R.drawable.ic_dashboard_black_24dp && mView.equals(homepageContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
+        } else if (id == R.drawable.ic_home_black_24dp && mView.equals(homepageContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
+        } else if (id == R.drawable.ic_launcher_background && mView.equals(homepageContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        } else if (id == R.drawable.ic_launcher_foreground && mView.equals(articleContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
+        } else if (id == R.drawable.ic_dashboard_black_24dp && mView.equals(articleContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
+        } else if (id == R.drawable.ic_home_black_24dp && mView.equals(articleContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
+        } else if (id == R.drawable.ic_launcher_background && mView.equals(articleContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         }
     }
 
