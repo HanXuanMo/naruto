@@ -2,9 +2,12 @@ package com.naruto.android;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -36,9 +39,10 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    Drawable drawable_0,drawable_1,drawable_2,drawable_3;
     //
     private  ViewGroup mViewGroup;
-    private static int ID;
+    private static Drawable ID;
 
     //按钮距离
     private static final int DISTANCE = 300;
@@ -171,7 +175,13 @@ public class MainActivity extends AppCompatActivity {
         actionButton1 = (FloatingActionButton) findViewById(R.id.float_btn1);
         actionButton2 = (FloatingActionButton) findViewById(R.id.float_btn2);
         actionButton3 = (FloatingActionButton) findViewById(R.id.float_btn3);
-        ID = R.drawable.ic_launcher_foreground;
+
+        drawable_0=actionButton.getDrawable();
+        drawable_1=actionButton1.getDrawable();
+        drawable_2=actionButton2.getDrawable();
+        drawable_3=actionButton3.getDrawable();
+
+
 
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,10 +200,11 @@ public class MainActivity extends AppCompatActivity {
                 //获取原按钮及点击按钮图片
                 Drawable drawable = actionButton.getDrawable();
                 Drawable drawable1 = actionButton1.getDrawable();
+                ID = drawable1;
                 //交换原按钮及点击按钮图片
                 actionButton1.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable1);
-                ID = R.drawable.ic_dashboard_black_24dp;
+
                 hideMenu();
             }
         });
@@ -203,9 +214,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Drawable drawable = actionButton.getDrawable();
                 Drawable drawable2 = actionButton2.getDrawable();
+                ID = drawable2;
                 actionButton2.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable2);
-                ID = R.drawable.ic_home_black_24dp;
+
                 hideMenu();
             }
         });
@@ -215,9 +227,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Drawable drawable = actionButton.getDrawable();
                 Drawable drawable3 = actionButton3.getDrawable();
+                ID = drawable3;
                 actionButton3.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable3);
-                ID = R.drawable.ic_launcher_background;
+
                 hideMenu();
             }
         });
@@ -365,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private void initFruits() {
+    private void initGame() {
         for (int i = 0; i < 10; i++) {
             Game apple = new Game("Apple", R.drawable.ic_dashboard_black_24dp);
             gameList.add(apple);
@@ -391,22 +404,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //判断画面
-    private void initViewContent(int id, View mView) {
-        if (id == R.drawable.ic_launcher_foreground && mView.equals(homepageContent)) {
+   private void initViewContent(Drawable id, View mView) {
+        if (id==drawable_0&& mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
-        } else if (id == R.drawable.ic_dashboard_black_24dp && mView.equals(homepageContent)) {
+        } else if (id==drawable_1&& mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
-        } else if (id == R.drawable.ic_home_black_24dp && mView.equals(homepageContent)) {
+        } else if (id==drawable_2&& mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
-        } else if (id == R.drawable.ic_launcher_background && mView.equals(homepageContent)) {
+        } else if (id==drawable_3&& mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        } else if (id == R.drawable.ic_launcher_foreground && mView.equals(articleContent)) {
+        } else if (id==drawable_0&& mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
-        } else if (id == R.drawable.ic_dashboard_black_24dp && mView.equals(articleContent)) {
+        } else if (id==drawable_1&& mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
-        } else if (id == R.drawable.ic_home_black_24dp && mView.equals(articleContent)) {
+        } else if (id==drawable_2&& mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
-        } else if (id == R.drawable.ic_launcher_background && mView.equals(articleContent)) {
+        } else if (id==drawable_3&& mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         }
     }
