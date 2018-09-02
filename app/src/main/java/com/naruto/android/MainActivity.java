@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         drawable_1=actionButton1.getDrawable();
         drawable_2=actionButton2.getDrawable();
         drawable_3=actionButton3.getDrawable();
+        ID = drawable_0;
 
         //滑动菜单点击事件
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);//获取滑动菜单事件
@@ -148,16 +149,7 @@ public class MainActivity extends AppCompatActivity {
         //View声明
         homepageContent = getLayoutInflater().inflate(R.layout.content_home_page, null);
         articleContent = getLayoutInflater().inflate(R.layout.content_article, null);
-
-        //设置gameView内容
         gameContent = getLayoutInflater().inflate(R.layout.content_game, null);
-        initGame();
-        RecyclerView recyclerView=(RecyclerView)gameContent.findViewById(R.id.recycler_view);
-        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        GameAdapter adapter=new GameAdapter(gameList);
-        recyclerView.setAdapter(adapter);
-
         videoContent = getLayoutInflater().inflate(R.layout.content_video, null);
         evaluationContent = getLayoutInflater().inflate(R.layout.content_evaluation, null);
         viewList = new ArrayList<View>();
@@ -173,6 +165,15 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         mViewPager.setAdapter(pagerAdapter);
+
+
+        //游戏内容列表
+        initGame();
+        RecyclerView recyclerView=(RecyclerView)gameContent.findViewById(R.id.recycler_view);
+        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        GameAdapter adapter=new GameAdapter(gameList);
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -384,6 +385,7 @@ public class MainActivity extends AppCompatActivity {
         initViewContent(ID, viewList.get(1));
         initViewContent(ID, viewList.get(2));
         initViewContent(ID, viewList.get(3));
+        initViewContent(ID, viewList.get(4));
         v1.start();
         v2x.start();
         v2y.start();
@@ -445,7 +447,30 @@ public class MainActivity extends AppCompatActivity {
             mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
         } else if (id.equals(drawable_3) && mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        }else if (id.equals(drawable_0) && mView.equals(gameContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
+        } else if (id.equals(drawable_1) && mView.equals(gameContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
+        } else if (id.equals(drawable_2) && mView.equals(gameContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
+        } else if (id.equals(drawable_3) && mView.equals(gameContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        }else if (id.equals(drawable_0) && mView.equals(videoContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
+        } else if (id.equals(drawable_1) && mView.equals(videoContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
+        } else if (id.equals(drawable_2) && mView.equals(videoContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
+        } else if (id.equals(drawable_3) && mView.equals(videoContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        }else if (id.equals(drawable_0) && mView.equals(evaluationContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
+        } else if (id.equals(drawable_1) && mView.equals(evaluationContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
+        } else if (id.equals(drawable_2) && mView.equals(evaluationContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
+        } else if (id.equals(drawable_3) && mView.equals(evaluationContent)) {
+            mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         }
     }
-
 }
