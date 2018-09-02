@@ -39,19 +39,21 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    Drawable drawable_0,drawable_1,drawable_2,drawable_3;
-    //
-    private  ViewGroup mViewGroup;
-    private static Drawable ID;
-
     //按钮距离
     private static final int DISTANCE = 300;
     private static final int DISTANCE2 = 220;
 
     //FloatingActionButton
-    private FloatingActionButton actionButton, actionButton1, actionButton2, actionButton3;
+    private FloatingActionButton actionButton;
+    private FloatingActionButton actionButton1;
+    private FloatingActionButton actionButton2;
+    private FloatingActionButton actionButton3;
+    private Drawable drawable_0;
+    private Drawable drawable_1;
+    private Drawable drawable_2;
+    private Drawable drawable_3;
+    private Drawable ID;
     private boolean mMenuOpen = false;
-    private View mFlMenu;
 
     //Game监听器
     private List<Game>gameList=new ArrayList<>();
@@ -67,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        actionButton = (FloatingActionButton) findViewById(R.id.float_btn);
+        actionButton1 = (FloatingActionButton) findViewById(R.id.float_btn1);
+        actionButton2 = (FloatingActionButton) findViewById(R.id.float_btn2);
+        actionButton3 = (FloatingActionButton) findViewById(R.id.float_btn3);
+        drawable_0=actionButton.getDrawable();
+        drawable_1=actionButton1.getDrawable();
+        drawable_2=actionButton2.getDrawable();
+        drawable_3=actionButton3.getDrawable();
 
         //滑动菜单点击事件
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);//获取滑动菜单事件
@@ -169,19 +180,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void initView() {
-        mFlMenu = findViewById(R.id.fl_menu);
-
-        actionButton = (FloatingActionButton) findViewById(R.id.float_btn);
-        actionButton1 = (FloatingActionButton) findViewById(R.id.float_btn1);
-        actionButton2 = (FloatingActionButton) findViewById(R.id.float_btn2);
-        actionButton3 = (FloatingActionButton) findViewById(R.id.float_btn3);
-
-        drawable_0=actionButton.getDrawable();
-        drawable_1=actionButton1.getDrawable();
-        drawable_2=actionButton2.getDrawable();
-        drawable_3=actionButton3.getDrawable();
-
-
 
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -405,21 +403,21 @@ public class MainActivity extends AppCompatActivity {
 
     //判断画面
    private void initViewContent(Drawable id, View mView) {
-        if (id==drawable_0&& mView.equals(homepageContent)) {
+        if (id.equals(drawable_0) && mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
-        } else if (id==drawable_1&& mView.equals(homepageContent)) {
+        } else if (id.equals(drawable_1) && mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
-        } else if (id==drawable_2&& mView.equals(homepageContent)) {
+        } else if (id.equals(drawable_2) && mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
-        } else if (id==drawable_3&& mView.equals(homepageContent)) {
+        } else if (id.equals(drawable_3) && mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        } else if (id==drawable_0&& mView.equals(articleContent)) {
+        } else if (id.equals(drawable_0) && mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
-        } else if (id==drawable_1&& mView.equals(articleContent)) {
+        } else if (id.equals(drawable_1) && mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorXbox));
-        } else if (id==drawable_2&& mView.equals(articleContent)) {
+        } else if (id.equals(drawable_2) && mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorPc));
-        } else if (id==drawable_3&& mView.equals(articleContent)) {
+        } else if (id.equals(drawable_3) && mView.equals(articleContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
         }
     }
