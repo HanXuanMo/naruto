@@ -24,18 +24,22 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Random;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     View homepageContent, articleContent, gameContent, videoContent, evaluationContent;
     private List<View> viewList;//view数组
 
+    //滑动菜单
     private DrawerLayout mDrawerLayout;
 
     @Override
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //悬浮按钮
         actionButton = (FloatingActionButton) findViewById(R.id.float_btn);
         actionButton1 = (FloatingActionButton) findViewById(R.id.float_btn1);
         actionButton2 = (FloatingActionButton) findViewById(R.id.float_btn2);
@@ -116,11 +122,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //头像点击登录
+        View headlayout = navigationView.inflateHeaderView(R.layout.nav_header);
+        ImageView login = (ImageView) headlayout.findViewById(R.id.head_image);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
         //ToolBar
         Toolbar toolbar = (Toolbar) findViewById(R.id.home_page);
         setSupportActionBar(toolbar);
 
-        //滑动菜单
+        //按钮点击出现滑动菜单
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
