@@ -148,7 +148,16 @@ public class MainActivity extends AppCompatActivity {
         //View声明
         homepageContent = getLayoutInflater().inflate(R.layout.content_home_page, null);
         articleContent = getLayoutInflater().inflate(R.layout.content_article, null);
-        gameContent = getLayoutInflater().inflate(R.layout.game_item, null);
+
+        //设置gameView内容
+        gameContent = getLayoutInflater().inflate(R.layout.content_game, null);
+        initGame();
+        RecyclerView recyclerView=(RecyclerView)gameContent.findViewById(R.id.recycler_view);
+        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        GameAdapter adapter=new GameAdapter(gameList);
+        recyclerView.setAdapter(adapter);
+
         videoContent = getLayoutInflater().inflate(R.layout.content_video, null);
         evaluationContent = getLayoutInflater().inflate(R.layout.content_evaluation, null);
         viewList = new ArrayList<View>();
