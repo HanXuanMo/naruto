@@ -84,7 +84,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/ic_dashboard_black_24dp"
+            app:srcCompat="@drawable/game_tag_top_ns_dz"
             app:elevation="5dp"
             app:fabSize="normal" />
 
@@ -95,7 +95,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/ic_home_black_24dp"
+            app:srcCompat="@drawable/game_tag_top_xbox_dz"
             app:elevation="5dp"
             app:fabSize="normal"/>
 
@@ -106,7 +106,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/ic_launcher_background"
+            app:srcCompat="@drawable/game_tag_top_steamzk"
             app:elevation="5dp"
             app:fabSize="normal"/>
 
@@ -117,7 +117,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/ic_launcher_foreground"
+            app:srcCompat="@drawable/salelist_platform_ps4_white"
             app:elevation="5dp"
             app:fabSize="normal"/>
     </FrameLayout>
