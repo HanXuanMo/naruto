@@ -5,8 +5,8 @@ import android.widget.TextView;
 
 public class Game {
 
-    int gameImage;
-    String gameName;
+    private int gameImage;
+    private String gameName;
 
     public Game(String gameName,int gameImage)
     {
