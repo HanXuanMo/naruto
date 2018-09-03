@@ -1,8 +1,6 @@
 package com.naruto.android;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -42,7 +38,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, int i) {
-        final View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.game_item,viewGroup,false);
+        final View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_game,viewGroup,false);
         final ViewHolder holder=new ViewHolder(view);
         //游戏列表点击事件
         holder.gameView.setOnClickListener(new View.OnClickListener(){

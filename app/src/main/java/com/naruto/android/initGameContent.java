@@ -9,7 +9,7 @@ public class initGameContent {
 
     public initGameContent() {
         this.gameList = new ArrayList<>();
-    } 
+    }
 
     public void initGameps() {
         for (int i = 0; i < 10; i++) {

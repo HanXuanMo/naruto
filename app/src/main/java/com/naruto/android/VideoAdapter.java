@@ -10,45 +10,44 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
 
-    private List<Article>mArticlelist;
+    private List<Video> mVideolist;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView articleImage;
-        TextView articleContent;
+        ImageView videoImage;
+        TextView videoTitle;
 
         public ViewHolder(View view)
         {
             super(view);
-            articleImage=(ImageView) view.findViewById(R.id.article_image);
-            articleContent=(TextView) view.findViewById(R.id.article_content);
+            videoImage=(ImageView) view.findViewById(R.id.video_image);
+            videoTitle=(TextView) view.findViewById(R.id.video_Title);
         }
     }
 
-    public ArticleAdapter(List<Article>articleList)
+    public VideoAdapter(List<Video>videoList)
     {
-        mArticlelist=articleList;
+        mVideolist=videoList;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_article,viewGroup,false);
+        View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_video,viewGroup,false);
         ViewHolder holder=new ViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Article article=mArticlelist.get(i);
-        viewHolder.articleContent.setText(article.articleContent);
-        viewHolder.articleImage.setImageResource(article.articleImage);
+        Video video=mVideolist.get(i);
+        viewHolder.videoTitle.setText(video.videoTitle);
+        viewHolder.videoImage.setImageResource(video.videoImage);
     }
 
     @Override
     public int getItemCount() {
-        return mArticlelist.size();
+        return mVideolist.size();
     }
 }
-
