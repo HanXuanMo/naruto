@@ -5,25 +5,25 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_ps"
+        android:id="@+id/recycler_game_ps"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_ns"
+        android:id="@+id/recycler_game_ns"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_xbox"
+        android:id="@+id/recycler_game_xbox"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view_pc"
+        android:id="@+id/recycler_game_pc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>

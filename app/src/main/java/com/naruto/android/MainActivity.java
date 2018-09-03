@@ -22,6 +22,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -49,7 +50,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int DISTANCE = 300;
     private static final int DISTANCE2 = 220;
 
-    private RecyclerView recyclerView;
+    //内容滑动id
+    private RecyclerView recyclerArticleView;
+    private RecyclerView recyclerGameView;
+    private RecyclerView recyclerVideoView;
+    private RecyclerView recyclerEvaluationView;
 
     //FloatingActionButton
     private FloatingActionButton actionButton;
@@ -64,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean mMenuOpen = false;
 
     //Game监听器
-    private initGameContent initContent = new initGameContent();
+    private initGameContent initGameContent = new initGameContent();
+    //Article监听器
+    private initArticleContent initArticleContent = new initArticleContent();
 
     //ViewPage
     private ViewPager mViewPager;
@@ -172,14 +179,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         //游戏内容列表
-        initContent.initGameps();
-        recyclerView=(RecyclerView)gameContent.findViewById(R.id.recycler_view_ps);
-        recyclerView.setVisibility(View.VISIBLE);
-        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        GameAdapter adapter=new GameAdapter(initContent.getGameList());
-        recyclerView.setAdapter(adapter);
+        initGameContent.initGameps();
+        recyclerGameView=(RecyclerView)gameContent.findViewById(R.id.recycler_game_ps);
+        recyclerGameView.setVisibility(View.VISIBLE);
+        StaggeredGridLayoutManager layoutGameManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        recyclerGameView.setLayoutManager(layoutGameManager);
+        GameAdapter gameAdapter=new GameAdapter(initGameContent.getGameList());
+        recyclerGameView.setAdapter(gameAdapter);
 
+        //文章内容列表
+        initArticleContent.initArticlepc();
+        recyclerArticleView = (RecyclerView) articleContent.findViewById(R.id.recycler_article_ps);
+        recyclerArticleView.setVisibility(View.VISIBLE);
+        LinearLayoutManager layoutArticleManager = new LinearLayoutManager(this);
+        recyclerArticleView.setLayoutManager(layoutArticleManager);
+        ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
+        recyclerArticleView.setAdapter(articleAdapter);
     }
 
     //TabLayout(PagerAdapter)
@@ -460,46 +475,83 @@ public class MainActivity extends AppCompatActivity {
     {
 
         //隐藏现在布局
-        recyclerView.setVisibility(View.GONE);
+        recyclerGameView.setVisibility(View.GONE);
+        recyclerArticleView.setVisibility(View.GONE);
 
         if(id1.equals(drawable_0))
         {
             //初始化游戏数据
-            initContent.initGameps();
+            initGameContent.initGameps();
+            initArticleContent.initArticleps();
+
             //加载选中布局
-            recyclerView=gameContent.findViewById(R.id.recycler_view_ps);
-            recyclerView.setVisibility(View.VISIBLE);
+            recyclerGameView=gameContent.findViewById(R.id.recycler_game_ps);
+            recyclerGameView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(initContent.getGameList());
-            recyclerView.setAdapter(adapter);
+            recyclerGameView.setLayoutManager(layoutManager);
+            GameAdapter gameAdapter=new GameAdapter(initGameContent.getGameList());
+            recyclerGameView.setAdapter(gameAdapter);
+
+            recyclerArticleView = articleContent.findViewById(R.id.recycler_article_ps);
+            recyclerArticleView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutArticleManager = new LinearLayoutManager(this);
+            recyclerArticleView.setLayoutManager(layoutArticleManager);
+            ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
+            recyclerArticleView.setAdapter(articleAdapter);
+
         }else if (id1.equals(drawable_1))
         {
-            initContent.initGamens();
-            recyclerView=gameContent.findViewById(R.id.recycler_view_ns);
-            recyclerView.setVisibility(View.VISIBLE);
+            initGameContent.initGamens();
+            recyclerGameView=gameContent.findViewById(R.id.recycler_game_ns);
+            recyclerGameView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(initContent.getGameList());
-            recyclerView.setAdapter(adapter);
+            recyclerGameView.setLayoutManager(layoutManager);
+            GameAdapter adapter=new GameAdapter(initGameContent.getGameList());
+            recyclerGameView.setAdapter(adapter);
+
+            initArticleContent.initArticlens();
+            recyclerArticleView = articleContent.findViewById(R.id.recycler_article_ns);
+            recyclerArticleView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutArticleManager = new LinearLayoutManager(this);
+            recyclerArticleView.setLayoutManager(layoutArticleManager);
+            ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
+            recyclerArticleView.setAdapter(articleAdapter);
+
         }else if (id1.equals(drawable_2))
         {
-            initContent.initGamexbox();
-            recyclerView=gameContent.findViewById(R.id.recycler_view_xbox);
-            recyclerView.setVisibility(View.VISIBLE);
+            initGameContent.initGamexbox();
+            recyclerGameView=gameContent.findViewById(R.id.recycler_game_xbox);
+            recyclerGameView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(initContent.getGameList());
-            recyclerView.setAdapter(adapter);
+            recyclerGameView.setLayoutManager(layoutManager);
+            GameAdapter adapter=new GameAdapter(initGameContent.getGameList());
+            recyclerGameView.setAdapter(adapter);
+
+            initArticleContent.initArticlexbox();
+            recyclerArticleView = articleContent.findViewById(R.id.recycler_article_xbox);
+            recyclerArticleView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutArticleManager = new LinearLayoutManager(this);
+            recyclerArticleView.setLayoutManager(layoutArticleManager);
+            ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
+            recyclerArticleView.setAdapter(articleAdapter);
+
         }else if (id1.equals(drawable_3))
         {
-            initContent.initGamepc();
-            recyclerView=gameContent.findViewById(R.id.recycler_view_pc);
-            recyclerView.setVisibility(View.VISIBLE);
+            initGameContent.initGamepc();
+            recyclerGameView=gameContent.findViewById(R.id.recycler_game_pc);
+            recyclerGameView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(initContent.getGameList());
-            recyclerView.setAdapter(adapter);
+            recyclerGameView.setLayoutManager(layoutManager);
+            GameAdapter adapter=new GameAdapter(initGameContent.getGameList());
+            recyclerGameView.setAdapter(adapter);
+
+            initArticleContent.initArticlepc();
+            recyclerArticleView = articleContent.findViewById(R.id.recycler_article_pc);
+            recyclerArticleView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutArticleManager = new LinearLayoutManager(this);
+            recyclerArticleView.setLayoutManager(layoutArticleManager);
+            ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
+            recyclerArticleView.setAdapter(articleAdapter);
         }
     }
 }
