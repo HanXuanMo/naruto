@@ -3,36 +3,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/game_item_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:src="@color/colorAccent"/>
-
-    <TextView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:text="游戏图片"/>
-
-    <TextView
+    <include
+        layout="@layout/app_bar_game_content"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:text="未定"
-        android:layout_toRightOf="@id/game_item_image"/>
+        android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/game_item_content"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/game_item_image"
-        android:text="游戏简介可缩写"/>
-
-    <TextView
-        android:id="@+id/game_item_reviews"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/game_item_content"
-        android:text="游戏评价"/>
 </RelativeLayout>

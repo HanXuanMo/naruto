@@ -14,4 +14,7 @@
     <string name="tab_game">游戏</string>
     <string name="tab_video">视频</string>
     <string name="tab_evaluation">测评</string>
+    <string name="game_strategy">游戏简介</string>
+    <string name="game_item_comments_section">评价区</string>
+
 </resources>
