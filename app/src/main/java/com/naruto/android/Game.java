@@ -1,8 +1,5 @@
 package com.naruto.android;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class Game {
 
     private int gameImage;

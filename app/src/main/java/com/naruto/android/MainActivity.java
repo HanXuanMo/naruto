@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Game>gameListns=new ArrayList<>();
     private List<Game>gameListpc=new ArrayList<>();
     private List<Game>gameListxbox=new ArrayList<>();
+    private initGameContent initGameContent;
 
     //ViewPage
     private ViewPager mViewPager;
@@ -234,7 +235,6 @@ public class MainActivity extends AppCompatActivity {
                 Drawable drawable = actionButton.getDrawable();
                 Drawable drawable1 = actionButton1.getDrawable();
                 //根据图片判断滑动列表布局
-                RecyclerViewJudge(drawable1);
                 ID = drawable1;
                 //交换原按钮及点击按钮图片
                 actionButton1.setImageDrawable(drawable);
@@ -249,7 +249,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Drawable drawable = actionButton.getDrawable();
                 Drawable drawable2 = actionButton2.getDrawable();
-                RecyclerViewJudge(drawable2);
                 ID = drawable2;
                 actionButton2.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable2);
@@ -263,11 +262,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Drawable drawable = actionButton.getDrawable();
                 Drawable drawable3 = actionButton3.getDrawable();
-                RecyclerViewJudge(drawable3);
                 ID = drawable3;
                 actionButton3.setImageDrawable(drawable);
                 actionButton.setImageDrawable(drawable3);
-
                 hideMenu();
             }
         });
@@ -393,6 +390,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //开始动画
+        RecyclerViewJudge(ID);
         initViewContent(ID, viewList.get(0));
         initViewContent(ID, viewList.get(1));
         initViewContent(ID, viewList.get(2));
@@ -515,7 +513,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //判断画面
-   private void initViewContent(Drawable id, View mView) {
+    private void initViewContent(Drawable id, View mView) {
 
         if (id.equals(drawable_0) && mView.equals(homepageContent)) {
             mView.setBackgroundColor(getResources().getColor(R.color.colorNs));
@@ -571,7 +569,7 @@ public class MainActivity extends AppCompatActivity {
             //初始化游戏数据
             initGameps();
             //加载选中布局
-            recyclerView=findViewById(R.id.recycler_view_ps);
+            recyclerView=gameContent.findViewById(R.id.recycler_view_ps);
             recyclerView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
@@ -580,7 +578,7 @@ public class MainActivity extends AppCompatActivity {
         }else if (id1.equals(drawable_1))
         {
             initGamens();
-            recyclerView=findViewById(R.id.recycler_view_ns);
+            recyclerView=gameContent.findViewById(R.id.recycler_view_ns);
             recyclerView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
@@ -589,7 +587,7 @@ public class MainActivity extends AppCompatActivity {
         }else if (id1.equals(drawable_2))
         {
             initGamexbox();
-            recyclerView=findViewById(R.id.recycler_view_xbox);
+            recyclerView=gameContent.findViewById(R.id.recycler_view_xbox);
             recyclerView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
@@ -598,7 +596,7 @@ public class MainActivity extends AppCompatActivity {
         }else if (id1.equals(drawable_3))
         {
             initGamepc();
-            recyclerView=findViewById(R.id.recycler_view_pc);
+            recyclerView=gameContent.findViewById(R.id.recycler_view_pc);
             recyclerView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
