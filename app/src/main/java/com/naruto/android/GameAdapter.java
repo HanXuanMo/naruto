@@ -42,14 +42,17 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, int i) {
-        View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.game_item,viewGroup,false);
+        final View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.game_item,viewGroup,false);
         final ViewHolder holder=new ViewHolder(view);
+        //游戏列表点击事件
         holder.gameView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 int position=holder.getAdapterPosition();
                 Game game=mGamelist.get(position);
                 Toast.makeText(v.getContext(),"You clicker view"+game.getGameName(),Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(v.getContext(),Game_item_content.class);
+                v.getContext().startActivity(intent);
             }
         });
         holder.gameImage.setOnClickListener(new View.OnClickListener(){
@@ -58,6 +61,8 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 int position=holder.getAdapterPosition();
                 Game game=mGamelist.get(position);
                 Toast.makeText(v.getContext(),"You clicked image"+game.getGameName(),Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(v.getContext(),Game_item_content.class);
+                v.getContext().startActivity(intent);
             }
         });
         return holder;
