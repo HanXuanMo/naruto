@@ -7,11 +7,16 @@ public class initGameContent {
 
     private List<Game>gameList;
 
+    public List<Game> getGameList() {
+        return gameList;
+    }
+
     public initGameContent() {
         this.gameList = new ArrayList<>();
     }
 
     public void initGameps() {
+        gameList.clear ();
         for (int i = 0; i < 10; i++) {
             Game apple = new Game("ApplePS", R.drawable.ic_dashboard_black_24dp);
             gameList.add(apple);
@@ -36,6 +41,7 @@ public class initGameContent {
         }
     }
     public void initGamens() {
+        gameList.clear ();
         for (int i = 0; i < 10; i++) {
             Game apple = new Game("AppleNS", R.drawable.ic_dashboard_black_24dp);
             gameList.add(apple);
@@ -60,6 +66,7 @@ public class initGameContent {
         }
     }
     public void initGamepc() {
+        gameList.clear ();
         for (int i = 0; i < 10; i++) {
             Game apple = new Game("ApplePC", R.drawable.ic_dashboard_black_24dp);
             gameList.add(apple);
@@ -84,6 +91,7 @@ public class initGameContent {
         }
     }
     public void initGamexbox() {
+        gameList.clear ();
         for (int i = 0; i < 10; i++) {
             Game apple = new Game("AppleXBOX", R.drawable.ic_dashboard_black_24dp);
             gameList.add(apple);

@@ -64,11 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean mMenuOpen = false;
 
     //Game监听器
-    private List<Game>gameListps=new ArrayList<>();
-    private List<Game>gameListns=new ArrayList<>();
-    private List<Game>gameListpc=new ArrayList<>();
-    private List<Game>gameListxbox=new ArrayList<>();
-    private initGameContent initGameContent;
+    private initGameContent initContent = new initGameContent();
 
     //ViewPage
     private ViewPager mViewPager;
@@ -176,12 +172,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         //游戏内容列表
-        initGameps();
+        initContent.initGameps();
         recyclerView=(RecyclerView)gameContent.findViewById(R.id.recycler_view_ps);
         recyclerView.setVisibility(View.VISIBLE);
         StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        GameAdapter adapter=new GameAdapter(gameListps);
+        GameAdapter adapter=new GameAdapter(initContent.getGameList());
         recyclerView.setAdapter(adapter);
 
     }
@@ -414,104 +410,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //初始化游戏数据
-    private void initGameps() {
-        for (int i = 0; i < 10; i++) {
-            Game apple = new Game("ApplePS", R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(apple);
-            Game banana = new Game("Banana",R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(banana);
-            Game orange = new Game("Orange",R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(orange);
-            Game watermelon = new Game("Watermelon", R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(watermelon);
-            Game pear = new Game("Pear", R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(pear);
-            Game grape = new Game("Grape", R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(grape);
-            Game pineapple = new Game("Pineapple",R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(pineapple);
-            Game strawberry = new Game("Strawberry",R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(strawberry);
-            Game cherry = new Game("Cherry",R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(cherry);
-            Game mango = new Game("Mango",R.drawable.ic_dashboard_black_24dp);
-            gameListps.add(mango);
-        }
-    }
-    private void initGamens() {
-        for (int i = 0; i < 10; i++) {
-            Game apple = new Game("AppleNS", R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(apple);
-            Game banana = new Game("Banana",R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(banana);
-            Game orange = new Game("Orange",R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(orange);
-            Game watermelon = new Game("Watermelon", R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(watermelon);
-            Game pear = new Game("Pear", R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(pear);
-            Game grape = new Game("Grape", R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(grape);
-            Game pineapple = new Game("Pineapple",R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(pineapple);
-            Game strawberry = new Game("Strawberry",R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(strawberry);
-            Game cherry = new Game("Cherry",R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(cherry);
-            Game mango = new Game("Mango",R.drawable.ic_dashboard_black_24dp);
-            gameListns.add(mango);
-        }
-    }
-    private void initGamepc() {
-        for (int i = 0; i < 10; i++) {
-            Game apple = new Game("ApplePC", R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(apple);
-            Game banana = new Game("Banana",R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(banana);
-            Game orange = new Game("Orange",R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(orange);
-            Game watermelon = new Game("Watermelon", R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(watermelon);
-            Game pear = new Game("Pear", R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(pear);
-            Game grape = new Game("Grape", R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(grape);
-            Game pineapple = new Game("Pineapple",R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(pineapple);
-            Game strawberry = new Game("Strawberry",R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(strawberry);
-            Game cherry = new Game("Cherry",R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(cherry);
-            Game mango = new Game("Mango",R.drawable.ic_dashboard_black_24dp);
-            gameListpc.add(mango);
-        }
-    }
-    private void initGamexbox() {
-        for (int i = 0; i < 10; i++) {
-            Game apple = new Game("AppleXBOX", R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(apple);
-            Game banana = new Game("Banana",R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(banana);
-            Game orange = new Game("Orange",R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(orange);
-            Game watermelon = new Game("Watermelon", R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(watermelon);
-            Game pear = new Game("Pear", R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(pear);
-            Game grape = new Game("Grape", R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(grape);
-            Game pineapple = new Game("Pineapple",R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(pineapple);
-            Game strawberry = new Game("Strawberry",R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(strawberry);
-            Game cherry = new Game("Cherry",R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(cherry);
-            Game mango = new Game("Mango",R.drawable.ic_dashboard_black_24dp);
-            gameListxbox.add(mango);
-        }
-    }
-
     //判断画面
     private void initViewContent(Drawable id, View mView) {
 
@@ -567,40 +465,40 @@ public class MainActivity extends AppCompatActivity {
         if(id1.equals(drawable_0))
         {
             //初始化游戏数据
-            initGameps();
+            initContent.initGameps();
             //加载选中布局
             recyclerView=gameContent.findViewById(R.id.recycler_view_ps);
             recyclerView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(gameListps);
+            GameAdapter adapter=new GameAdapter(initContent.getGameList());
             recyclerView.setAdapter(adapter);
         }else if (id1.equals(drawable_1))
         {
-            initGamens();
+            initContent.initGamens();
             recyclerView=gameContent.findViewById(R.id.recycler_view_ns);
             recyclerView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(gameListns);
+            GameAdapter adapter=new GameAdapter(initContent.getGameList());
             recyclerView.setAdapter(adapter);
         }else if (id1.equals(drawable_2))
         {
-            initGamexbox();
+            initContent.initGamexbox();
             recyclerView=gameContent.findViewById(R.id.recycler_view_xbox);
             recyclerView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(gameListxbox);
+            GameAdapter adapter=new GameAdapter(initContent.getGameList());
             recyclerView.setAdapter(adapter);
         }else if (id1.equals(drawable_3))
         {
-            initGamepc();
+            initContent.initGamepc();
             recyclerView=gameContent.findViewById(R.id.recycler_view_pc);
             recyclerView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(gameListpc);
+            GameAdapter adapter=new GameAdapter(initContent.getGameList());
             recyclerView.setAdapter(adapter);
         }
     }
