@@ -1,19 +1,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/game_item_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:src="@color/colorAccent"/>
 
     <TextView
+        android:id="@+id/game_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <ImageView
+        android:id="@+id/game_item_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:text="未定"
-        android:layout_toRightOf="@id/game_item_image"/>
+        android:layout_below="@id/game_item_name" />
+
 
     <TextView
         android:id="@+id/game_item_strategy"
@@ -27,5 +27,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/game_item_strategy"
-        android:text="@string/game_item_comments_section"/>
+        android:text="@string/game_item_picture"/>
 </RelativeLayout>
