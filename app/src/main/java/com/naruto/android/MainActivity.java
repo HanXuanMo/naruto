@@ -1,20 +1,12 @@
 package com.naruto.android;
 
 import android.animation.ValueAnimator;
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -26,22 +18,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Random;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,9 +52,13 @@ public class MainActivity extends AppCompatActivity {
     private boolean mMenuOpen = false;
 
     //Game监听器
-    private initGameContent initGameContent = new initGameContent();
+    private InitGameContent initGameContent = new InitGameContent();
     //Article监听器
-    private initArticleContent initArticleContent = new initArticleContent();
+    private InitArticleContent initArticleContent = new InitArticleContent();
+    //Video监听器
+    private InitVideoContent initVideoContent = new InitVideoContent();
+    //Evaluation监听器
+    private InitEvaluationContent initEvaluationContent = new InitEvaluationContent();
 
     //ViewPage
     private ViewPager mViewPager;
@@ -195,6 +182,25 @@ public class MainActivity extends AppCompatActivity {
         recyclerArticleView.setLayoutManager(layoutArticleManager);
         ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
         recyclerArticleView.setAdapter(articleAdapter);
+
+        //视频内容列表
+        initVideoContent.initVideopc();
+        recyclerVideoView = (RecyclerView) videoContent.findViewById(R.id.recycler_video_ps);
+        recyclerVideoView.setVisibility(View.VISIBLE);
+        LinearLayoutManager layoutVideoManager = new LinearLayoutManager(this);
+        recyclerVideoView.setLayoutManager(layoutVideoManager);
+        VideoAdapter videoAdapter=new VideoAdapter(initVideoContent.getVideoList());
+        recyclerVideoView.setAdapter(videoAdapter);
+
+        //测评内容列表
+        initEvaluationContent.initEvaluationpc();
+        recyclerEvaluationView = (RecyclerView) evaluationContent.findViewById(R.id.recycler_evaluation_ps);
+        recyclerEvaluationView.setVisibility(View.VISIBLE);
+        LinearLayoutManager layoutEvaluationManager = new LinearLayoutManager(this);
+        recyclerEvaluationView.setLayoutManager(layoutEvaluationManager);
+        EvaluationAdapter evaluationAdapter=new EvaluationAdapter(initEvaluationContent.getEvaluationList());
+        recyclerEvaluationView.setAdapter(evaluationAdapter);
+
     }
 
     //TabLayout(PagerAdapter)
@@ -483,6 +489,8 @@ public class MainActivity extends AppCompatActivity {
             //初始化游戏数据
             initGameContent.initGameps();
             initArticleContent.initArticleps();
+            initVideoContent.initVideops();
+            initEvaluationContent.initEvaluationps();
 
             //加载选中布局
             recyclerGameView=gameContent.findViewById(R.id.recycler_game_ps);
@@ -499,6 +507,20 @@ public class MainActivity extends AppCompatActivity {
             ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
             recyclerArticleView.setAdapter(articleAdapter);
 
+            recyclerVideoView = videoContent.findViewById(R.id.recycler_video_ps);
+            recyclerVideoView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutVideoManager = new LinearLayoutManager(this);
+            recyclerVideoView.setLayoutManager(layoutVideoManager);
+            VideoAdapter videoAdapter=new VideoAdapter(initVideoContent.getVideoList());
+            recyclerVideoView.setAdapter(videoAdapter);
+
+            recyclerEvaluationView = evaluationContent.findViewById(R.id.recycler_evaluation_ps);
+            recyclerEvaluationView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutEvaluationManager = new LinearLayoutManager(this);
+            recyclerEvaluationView.setLayoutManager(layoutEvaluationManager);
+            EvaluationAdapter evaluationAdapter=new EvaluationAdapter(initEvaluationContent.getEvaluationList());
+            recyclerEvaluationView.setAdapter(evaluationAdapter);
+
         }else if (id1.equals(drawable_1))
         {
             initGameContent.initGamens();
@@ -506,8 +528,8 @@ public class MainActivity extends AppCompatActivity {
             recyclerGameView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerGameView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(initGameContent.getGameList());
-            recyclerGameView.setAdapter(adapter);
+            GameAdapter gameAdapter=new GameAdapter(initGameContent.getGameList());
+            recyclerGameView.setAdapter(gameAdapter);
 
             initArticleContent.initArticlens();
             recyclerArticleView = articleContent.findViewById(R.id.recycler_article_ns);
@@ -517,6 +539,23 @@ public class MainActivity extends AppCompatActivity {
             ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
             recyclerArticleView.setAdapter(articleAdapter);
 
+            initVideoContent.initVideons();
+            recyclerVideoView = videoContent.findViewById(R.id.recycler_video_ns);
+            recyclerVideoView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutVideoManager = new LinearLayoutManager(this);
+            recyclerVideoView.setLayoutManager(layoutVideoManager);
+            VideoAdapter videoAdapter=new VideoAdapter(initVideoContent.getVideoList());
+            recyclerVideoView.setAdapter(videoAdapter);
+
+            initEvaluationContent.initEvaluationns();
+            recyclerEvaluationView = evaluationContent.findViewById(R.id.recycler_evaluation_ns);
+            recyclerEvaluationView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutEvaluationManager = new LinearLayoutManager(this);
+            recyclerEvaluationView.setLayoutManager(layoutEvaluationManager);
+            EvaluationAdapter evaluationAdapter=new EvaluationAdapter(initEvaluationContent.getEvaluationList());
+            recyclerEvaluationView.setAdapter(evaluationAdapter);
+
+
         }else if (id1.equals(drawable_2))
         {
             initGameContent.initGamexbox();
@@ -524,8 +563,8 @@ public class MainActivity extends AppCompatActivity {
             recyclerGameView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerGameView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(initGameContent.getGameList());
-            recyclerGameView.setAdapter(adapter);
+            GameAdapter gameAdapter=new GameAdapter(initGameContent.getGameList());
+            recyclerGameView.setAdapter(gameAdapter);
 
             initArticleContent.initArticlexbox();
             recyclerArticleView = articleContent.findViewById(R.id.recycler_article_xbox);
@@ -535,6 +574,23 @@ public class MainActivity extends AppCompatActivity {
             ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
             recyclerArticleView.setAdapter(articleAdapter);
 
+            initVideoContent.initVideoxbox();
+            recyclerVideoView = videoContent.findViewById(R.id.recycler_video_xbox);
+            recyclerVideoView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutVideoManager = new LinearLayoutManager(this);
+            recyclerVideoView.setLayoutManager(layoutVideoManager);
+            VideoAdapter videoAdapter=new VideoAdapter(initVideoContent.getVideoList());
+            recyclerVideoView.setAdapter(videoAdapter);
+
+            initEvaluationContent.initEvaluationxbox();
+            recyclerEvaluationView = evaluationContent.findViewById(R.id.recycler_evaluation_xbox);
+            recyclerEvaluationView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutEvaluationManager = new LinearLayoutManager(this);
+            recyclerEvaluationView.setLayoutManager(layoutEvaluationManager);
+            EvaluationAdapter evaluationAdapter=new EvaluationAdapter(initEvaluationContent.getEvaluationList());
+            recyclerEvaluationView.setAdapter(evaluationAdapter);
+
+
         }else if (id1.equals(drawable_3))
         {
             initGameContent.initGamepc();
@@ -542,8 +598,8 @@ public class MainActivity extends AppCompatActivity {
             recyclerGameView.setVisibility(View.VISIBLE);
             StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
             recyclerGameView.setLayoutManager(layoutManager);
-            GameAdapter adapter=new GameAdapter(initGameContent.getGameList());
-            recyclerGameView.setAdapter(adapter);
+            GameAdapter gameAdapter=new GameAdapter(initGameContent.getGameList());
+            recyclerGameView.setAdapter(gameAdapter);
 
             initArticleContent.initArticlepc();
             recyclerArticleView = articleContent.findViewById(R.id.recycler_article_pc);
@@ -552,6 +608,23 @@ public class MainActivity extends AppCompatActivity {
             recyclerArticleView.setLayoutManager(layoutArticleManager);
             ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
             recyclerArticleView.setAdapter(articleAdapter);
+
+            initVideoContent.initVideopc();
+            recyclerVideoView = videoContent.findViewById(R.id.recycler_video_pc);
+            recyclerVideoView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutVideoManager = new LinearLayoutManager(this);
+            recyclerVideoView.setLayoutManager(layoutVideoManager);
+            VideoAdapter videoAdapter=new VideoAdapter(initVideoContent.getVideoList());
+            recyclerVideoView.setAdapter(videoAdapter);
+
+            initEvaluationContent.initEvaluationpc();
+            recyclerEvaluationView = evaluationContent.findViewById(R.id.recycler_evaluation_pc);
+            recyclerEvaluationView.setVisibility(View.VISIBLE);
+            LinearLayoutManager layoutEvaluationManager = new LinearLayoutManager(this);
+            recyclerEvaluationView.setLayoutManager(layoutEvaluationManager);
+            EvaluationAdapter evaluationAdapter=new EvaluationAdapter(initEvaluationContent.getEvaluationList());
+            recyclerEvaluationView.setAdapter(evaluationAdapter);
+
         }
     }
 }

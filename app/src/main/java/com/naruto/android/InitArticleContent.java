@@ -3,7 +3,7 @@ package com.naruto.android;
 import java.util.ArrayList;
 import java.util.List;
 
-public class initArticleContent {
+public class InitArticleContent {
 
     private List<Article>articleList;
 
@@ -11,7 +11,7 @@ public class initArticleContent {
         return articleList;
     }
 
-    public initArticleContent() {
+    public InitArticleContent() {
         this.articleList = new ArrayList<>();
     }
 
