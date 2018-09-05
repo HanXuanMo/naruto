@@ -12,6 +12,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -80,6 +82,26 @@ public class Game_item_content extends AppCompatActivity {
         IntroAdapter adapter=new IntroAdapter(mIntrolist);
         recyclerView.setAdapter(adapter);
 
+    }
+
+
+    //Toolbar上显示按键
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId())
+        {
+            case R.id.back:
+                Intent intent=new Intent(Game_item_content.this,MainActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
     }
 
     //TabLayout(PagerAdapter)
