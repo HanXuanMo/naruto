@@ -48,7 +48,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 int position=holder.getAdapterPosition();
                 Game game=mGamelist.get(position);
                 Toast.makeText(v.getContext(),"You clicker view"+game.getGameName(),Toast.LENGTH_SHORT).show();
-                Game_item_content.actionStart(v.getContext(),game.getGameName(),game.getGameImage());
+                Game_item_content.actionStart(v.getContext(),game.getGameName());
             }
         });
         holder.gameImage.setOnClickListener(new View.OnClickListener(){
@@ -57,7 +57,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.ViewHolder> {
                 int position=holder.getAdapterPosition();
                 Game game=mGamelist.get(position);
                 Toast.makeText(v.getContext(),"You clicked image"+game.getGameName(),Toast.LENGTH_SHORT).show();
-                Game_item_content.actionStart(v.getContext(),game.getGameName(),game.getGameImage());
+                Game_item_content.actionStart(v.getContext(),game.getGameName());
             }
         });
         return holder;

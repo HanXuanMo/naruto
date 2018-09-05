@@ -20,15 +20,15 @@ public class InitGameContent {
         for (int i = 0; i < 10; i++) {
             Game apple = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
             gameList.add(apple);
-            Game banana = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
+            Game banana = new Game("wizard_3", R.drawable.wizard_3);
             gameList.add(banana);
-            Game orange = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
+            Game orange = new Game("blood_source", R.drawable.blood_source);
             gameList.add(orange);
-            Game watermelon = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
+            Game watermelon = new Game("detroit", R.drawable.detroit);
             gameList.add(watermelon);
-            Game pear = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
+            Game pear = new Game("god_of_war4", R.drawable.god_of_war4);
             gameList.add(pear);
-            Game grape = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
+            Game grape = new Game("persona5", R.drawable.persona5);
             gameList.add(grape);
             Game pineapple = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
             gameList.add(pineapple);
