@@ -30,14 +30,6 @@ public class InitGameContent {
             gameList.add(pear);
             Game grape = new Game("persona5", R.drawable.persona5);
             gameList.add(grape);
-            Game pineapple = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
-            gameList.add(pineapple);
-            Game strawberry = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
-            gameList.add(strawberry);
-            Game cherry = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
-            gameList.add(cherry);
-            Game mango = new Game("cyberpunk2077", R.drawable.cyberpunk2077);
-            gameList.add(mango);
         }
     }
     public void initGamens() {

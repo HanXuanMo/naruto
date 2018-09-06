@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,8 @@ public class Game_item_content extends AppCompatActivity {
 
     //游戏名字
     private String Name;
+
+    private boolean flag;
 
 
     private ImageView imageView;
@@ -69,8 +72,31 @@ public class Game_item_content extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         mViewPager.setAdapter(pagerAdapter);
 
-        textView=(TextView)StrategyContent.findViewById(R.id.game_item_name);
+        textView=(TextView)StrategyContent.findViewById(R.id.game_item_strategy);
         textView.setText(Name);
+        textView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.game_item_strategy:
+                        if (!flag) {
+                            flag = true;
+                            textView.setEllipsize(null);  //展开
+                            textView.setSingleLine(false);
+                        } else {
+                            flag = false;
+                            textView.setEllipsize(TextUtils.TruncateAt.END);  //收缩
+                            textView.setLines(2);
+                        }
+                        break;
+
+                    default:
+                        break;
+
+                }
+            }
+        });
+
         imageView=(ImageView)StrategyContent.findViewById(R.id.game_item_image);
         strategyVIew=(TextView)StrategyContent.findViewById(R.id.game_item_strategy);
         Judge_Gamecontent(Name);
