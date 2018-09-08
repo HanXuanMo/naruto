@@ -29,16 +29,20 @@ import java.util.List;
 //游戏内容
 public class Game_item_content extends AppCompatActivity {
 
-    //游戏名字
+    //游戏姓名，主题图，游戏简介，图片简介
     private String Name;
-
-    private boolean flag;
-
-
     private ImageView imageView;
     private TextView nameView;
     private TextView strategyView;
-    private TextView imagestrategyView;
+
+    private boolean flag;
+
+    //游戏图片
+    private ImageView picture1;
+    private ImageView picture2;
+    private ImageView picture3;
+    private ImageView picture4;
+
 
     private List<Intro>mIntrolist=new ArrayList<>();
     private List<StrategyContent>strategyContentList=new ArrayList<>();
@@ -102,7 +106,10 @@ public class Game_item_content extends AppCompatActivity {
                 }
             }
         });
-
+        picture1=(ImageView)StrategyContent.findViewById(R.id.picture1);
+        picture2=(ImageView)StrategyContent.findViewById(R.id.picture2);
+        picture3=(ImageView)StrategyContent.findViewById(R.id.picture3);
+        picture4=(ImageView)StrategyContent.findViewById(R.id.picture4);
         imageView=(ImageView)StrategyContent.findViewById(R.id.game_item_image);
         InitStrategyContent init=new InitStrategyContent();
         init.init();
@@ -200,10 +207,55 @@ public class Game_item_content extends AppCompatActivity {
             {
                 imageID=strategyContentList.get(i).getImageView();
                 strategyID=strategyContentList.get(i).getStrategyView();
+                pictureSet(name);
                 break;
             }
         }
         imageView.setImageResource(imageID);
         strategyView.setText(strategyID);
+    }
+
+    //游戏图片动态加载
+    public void pictureSet(String name)
+    {
+        switch (name)
+        {
+            case "cyberpunk2077":
+                picture1.setImageResource(R.drawable.cyberpunk2077_picture1);
+                picture2.setImageResource(R.drawable.cyberpunk2077_picture2);
+                picture3.setImageResource(R.drawable.cyberpunk2077_picture3);
+                picture4.setImageResource(R.drawable.cyberpunk2077_picture4);
+                break;
+            case "blood_source":
+                picture1.setImageResource(R.drawable.blood_source_picture1);
+                picture2.setImageResource(R.drawable.blood_source_picture2);
+                picture3.setImageResource(R.drawable.blood_source_picture3);
+                picture4.setImageResource(R.drawable.blood_source_picture4);
+                break;
+            case "detroit":
+                picture1.setImageResource(R.drawable.detroit_picture1);
+                picture2.setImageResource(R.drawable.detroit_picture2);
+                picture3.setImageResource(R.drawable.detroit_picture3);
+                picture4.setImageResource(R.drawable.detroit_picture4);
+                break;
+            case "god_of_war4":
+                picture1.setImageResource(R.drawable.god_of_war4_picture1);
+                picture2.setImageResource(R.drawable.god_of_war4_picture2);
+                picture3.setImageResource(R.drawable.god_of_war4_picture3);
+                picture4.setImageResource(R.drawable.god_of_war4_picture4);
+                break;
+            case "persona5":
+                picture1.setImageResource(R.drawable.persona5_picture1);
+                picture2.setImageResource(R.drawable.persona5_picture2);
+                picture3.setImageResource(R.drawable.persona5_picture3);
+                picture4.setImageResource(R.drawable.persona5_picture4);
+                break;
+            case "wizard_3":
+                picture1.setImageResource(R.drawable.wizard_3_picture1);
+                picture2.setImageResource(R.drawable.wizard_3_picture2);
+                picture3.setImageResource(R.drawable.wizard_3_picture3);
+                picture4.setImageResource(R.drawable.wizard_3_picture4);
+                break;
+        }
     }
 }

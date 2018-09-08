@@ -47,26 +47,22 @@
                 <ImageView
                     android:id="@+id/picture1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cyberpunk2077_game"/>
+                    android:layout_height="match_parent" />
 
                 <ImageView
                     android:id="@+id/picture2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cyberpunk2077_game"/>
+                    android:layout_height="match_parent" />
 
                 <ImageView
                     android:id="@+id/picture3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cyberpunk2077_game"/>
+                    android:layout_height="match_parent" />
 
                 <ImageView
                     android:id="@+id/picture4"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/cyberpunk2077_game"/>
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
         </HorizontalScrollView>
