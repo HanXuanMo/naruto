@@ -8,6 +8,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -59,7 +60,10 @@ public class Game_item_content extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_item_content);
 
-        initIntro();
+        //初始化攻略内容
+        InitIntroContent initIntroContent=new InitIntroContent();
+        initIntroContent.init();
+        mIntrolist=initIntroContent.getIntroList();
 
         Intent intent=getIntent();
         Name=intent.getStringExtra("name");
@@ -122,6 +126,8 @@ public class Game_item_content extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         IntroAdapter adapter=new IntroAdapter(mIntrolist);
         recyclerView.setAdapter(adapter);
+        //添加下划线
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
     }
 
@@ -170,21 +176,6 @@ public class Game_item_content extends AppCompatActivity {
             return view == o;
         }
     };
-
-    private void initIntro() {
-        for (int i = 0; i < 10; i++) {
-            Intro apple = new Intro("Intro", R.drawable.ic_dashboard_black_24dp);
-            mIntrolist.add(apple);
-            Intro apple1 = new Intro("Intro", R.drawable.ic_dashboard_black_24dp);
-            mIntrolist.add(apple1);
-            Intro apple2 = new Intro("Intro", R.drawable.ic_dashboard_black_24dp);
-            mIntrolist.add(apple2);
-            Intro apple3 = new Intro("Intro", R.drawable.ic_dashboard_black_24dp);
-            mIntrolist.add(apple3);
-            Intro apple4 = new Intro("Intro", R.drawable.ic_dashboard_black_24dp);
-            mIntrolist.add(apple4);
-        }
-    }
 
     //活动数据传递
     public static void actionStart(Context context, String data1)

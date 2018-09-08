@@ -22,14 +22,12 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.ViewHolder> 
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View introView;
-        ImageView introImage;
         TextView introName;
 
         public ViewHolder(View view)
         {
             super(view);
             introView=view;
-            introImage=(ImageView) view.findViewById(R.id.intro_image);
             introName=(TextView)view.findViewById(R.id.intro_name);
         }
     }
@@ -53,14 +51,6 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.ViewHolder> 
                 Toast.makeText(v.getContext(),"You clicker view"+intro.getIntroContent(),Toast.LENGTH_SHORT).show();
             }
         });
-        holder.introImage.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                int position=holder.getAdapterPosition();
-                Intro intro=mIntrolist.get(position);
-                Toast.makeText(v.getContext(),"You clicker view"+intro.getIntroContent(),Toast.LENGTH_SHORT).show();
-            }
-        });
         return holder;
     }
 
@@ -68,7 +58,6 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Intro intro=mIntrolist.get(i);
         viewHolder.introName.setText(intro.getIntroContent());
-        viewHolder.introImage.setImageResource(intro.getIntroImage());
     }
 
     @Override
