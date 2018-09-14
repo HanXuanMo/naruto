@@ -1,12 +1,17 @@
 package com.naruto.android;
 
+import android.app.Activity;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import java.util.List;
 
@@ -15,13 +20,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     private List<Video> mVideolist;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView videoImage;
+        VideoView videoView;
         TextView videoTitle;
 
         public ViewHolder(View view)
         {
             super(view);
-            videoImage=(ImageView) view.findViewById(R.id.video_image);
+            videoView=(VideoView)view.findViewById(R.id.video_play);
             videoTitle=(TextView) view.findViewById(R.id.video_Title);
         }
     }
@@ -42,8 +47,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Video video=mVideolist.get(i);
+
+        Uri uri=Uri.parse(video.getUri());
+        viewHolder.videoView.setVideoURI(uri);
+        viewHolder.videoView.start();
+
         viewHolder.videoTitle.setText(video.videoTitle);
-        viewHolder.videoImage.setImageResource(video.videoImage);
     }
 
     @Override

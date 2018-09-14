@@ -3,19 +3,19 @@ package com.naruto.android;
 public class Evaluation {
 
     int evaluationImage;
-    String evaluationTitle;
+    String evaluationName;
 
-    public Evaluation(String evaluationTitle, int evaluationImage)
+    public Evaluation(String evaluationName, int evaluationImage)
     {
         this.evaluationImage=evaluationImage;
-        this.evaluationTitle=evaluationTitle;
+        this.evaluationName=evaluationName;
     }
 
     public int getEvaluationImage() {
         return evaluationImage;
     }
 
-    public String getEvaluationTitle() {
-        return evaluationTitle;
+    public String getEvaluationName() {
+        return evaluationName;
     }
 }

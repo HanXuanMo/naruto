@@ -16,12 +16,12 @@ public class EvaluationAdapter extends RecyclerView.Adapter<EvaluationAdapter.Vi
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView evaluationImage;
-        TextView evaluationTitle;
+        TextView evaluationName;
 
         public ViewHolder(View view) {
             super(view);
             evaluationImage = (ImageView) view.findViewById(R.id.evaluation_image);
-            evaluationTitle = (TextView) view.findViewById(R.id.evaluation_Title);
+            evaluationName = (TextView) view.findViewById(R.id.evaluation_name);
         }
     }
 
@@ -41,7 +41,7 @@ public class EvaluationAdapter extends RecyclerView.Adapter<EvaluationAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Evaluation evaluation = mEvaluationList.get(i);
         viewHolder.evaluationImage.setImageResource(evaluation.getEvaluationImage());
-        viewHolder.evaluationTitle.setText(evaluation.getEvaluationTitle());
+        viewHolder.evaluationName.setText(evaluation.getEvaluationName());
     }
 
     @Override

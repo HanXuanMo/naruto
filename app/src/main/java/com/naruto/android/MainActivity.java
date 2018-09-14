@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int DISTANCE2 = 220;
 
     //内容滑动id
+    private RecyclerView recyclerHomeView;
     private RecyclerView recyclerArticleView;
     private RecyclerView recyclerGameView;
     private RecyclerView recyclerVideoView;
@@ -51,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
     private Drawable ID;
     private boolean mMenuOpen = false;
 
+
+    //Home监听器
+    private InitHomeContent initHomeContent=new InitHomeContent();
     //Game监听器
     private InitGameContent initGameContent = new InitGameContent();
     //Article监听器
@@ -164,6 +169,14 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         mViewPager.setAdapter(pagerAdapter);
 
+        //首页内容
+        initHomeContent.initVideo();
+        recyclerHomeView=(RecyclerView)homepageContent.findViewById(R.id.recycler_home);
+        LinearLayoutManager layoutHomeManager=new LinearLayoutManager(this);
+        recyclerHomeView.setLayoutManager(layoutHomeManager);
+        HomeAdapter homeAdapter=new HomeAdapter(initHomeContent.getHomeList());
+        recyclerHomeView.setAdapter(homeAdapter);
+
 
         //游戏内容列表
         initGameContent.initGameps();
@@ -182,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerArticleView.setLayoutManager(layoutArticleManager);
         ArticleAdapter articleAdapter=new ArticleAdapter(initArticleContent.getArticleList());
         recyclerArticleView.setAdapter(articleAdapter);
+        //分割线
+        recyclerArticleView.addItemDecoration(new android.support.v7.widget.DividerItemDecoration(this,android.support.v7.widget.DividerItemDecoration.VERTICAL));
 
         //视频内容列表
         initVideoContent.initVideopc();
@@ -191,16 +206,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerVideoView.setLayoutManager(layoutVideoManager);
         VideoAdapter videoAdapter=new VideoAdapter(initVideoContent.getVideoList());
         recyclerVideoView.setAdapter(videoAdapter);
+        //分割线
+        recyclerVideoView.addItemDecoration(new android.support.v7.widget.DividerItemDecoration(this,android.support.v7.widget.DividerItemDecoration.VERTICAL));
 
         //测评内容列表
         initEvaluationContent.initEvaluationpc();
         recyclerEvaluationView = (RecyclerView) evaluationContent.findViewById(R.id.recycler_evaluation_ps);
         recyclerEvaluationView.setVisibility(View.VISIBLE);
-        LinearLayoutManager layoutEvaluationManager = new LinearLayoutManager(this);
+        StaggeredGridLayoutManager layoutEvaluationManager=new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL);
         recyclerEvaluationView.setLayoutManager(layoutEvaluationManager);
         EvaluationAdapter evaluationAdapter=new EvaluationAdapter(initEvaluationContent.getEvaluationList());
         recyclerEvaluationView.setAdapter(evaluationAdapter);
-
     }
 
     //TabLayout(PagerAdapter)
@@ -483,6 +499,9 @@ public class MainActivity extends AppCompatActivity {
         //隐藏现在布局
         recyclerGameView.setVisibility(View.GONE);
         recyclerArticleView.setVisibility(View.GONE);
+        recyclerVideoView.setVisibility(View.GONE);
+        recyclerEvaluationView.setVisibility(View.GONE);
+
 
         if(id1.equals(drawable_0))
         {
